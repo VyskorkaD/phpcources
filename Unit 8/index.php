@@ -7,7 +7,7 @@
 
 <?php
 error_reporting(E_ALL);
-require('Ex8_4.php');
+require('Classes.php');
 $employee = new Employee();
 $employee->setName("Dmytro");
 $employee->setAge(23);
