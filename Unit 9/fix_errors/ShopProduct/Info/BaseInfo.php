@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
+namespace ShopProduct\Info;
+use ShopProduct;
 
-
-class BaseInfo
+abstract class BaseInfo    //added abstract
 {
     /** @var ShopProduct */
     protected $shopProduct;

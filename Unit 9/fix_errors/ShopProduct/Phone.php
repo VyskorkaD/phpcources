@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
 
+namespace ShopProduct;
+use ShopProduct;
+use ShopProduct\Info\PhoneInfo as PhoneInfo;
+
 class Phone extends ShopProduct
 {
     private const PHONE = 'Телефон';
@@ -32,7 +36,7 @@ class Phone extends ShopProduct
     /**
      * @inheritDoc
      */
-    public function getProductType(): int
+    public function getProductType(): string    //int changed to string
     {
         return self::PHONE;
     }

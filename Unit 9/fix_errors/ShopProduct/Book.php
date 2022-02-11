@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
 
+namespace ShopProduct;
+use ShopProduct;
+use ShopProduct\Info\BookInfo as BookInfo;
+
 class Book extends ShopProduct
 {
     private const BOOK = 'Книга';

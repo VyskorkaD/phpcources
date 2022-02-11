@@ -1,5 +1,5 @@
 <?php
-
+use ShopProduct\{Phone, Book};
 error_reporting(E_ALL);
 
 require_once('Autoloader.php');
