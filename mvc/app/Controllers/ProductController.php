@@ -15,7 +15,7 @@ class ProductController extends Controller
 
     /**
      * Product index action that shows product list
-     * 
+     *
      * @return void
      */
     public function indexAction(): void
@@ -25,7 +25,7 @@ class ProductController extends Controller
 
     /**
      * Product list action
-     * 
+     *
      * @return void
      */
     public function listAction(): void
@@ -44,7 +44,7 @@ class ProductController extends Controller
 
     /**
      * Single product view action
-     * 
+     *
      * @return void
      */
     public function viewAction(): void
@@ -63,7 +63,7 @@ class ProductController extends Controller
 
     /**
      * Shows product editing page
-     * 
+     *
      * @return void
      */
     public function editAction(): void
@@ -84,7 +84,7 @@ class ProductController extends Controller
 
     /**
      * Shows product add page
-     * 
+     *
      * @return void
      */
     public function addAction(): void
@@ -131,7 +131,7 @@ class ProductController extends Controller
           {
           $sort = "name";
           }
-         * 
+         *
          */
         $sort = filter_input(INPUT_GET, 'sort');
         if (!isset($sort)) {
@@ -143,7 +143,7 @@ class ProductController extends Controller
           } else {
           $order = "DESC";
           }
-         * 
+         *
          */
         if ((int) filter_input(INPUT_GET, 'order') === 1) {
             $order = "DESC";

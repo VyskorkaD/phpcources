@@ -38,4 +38,3 @@ foreach($products as $product)  :
         </p>
     </div>
 <?php endforeach; ?>
-
