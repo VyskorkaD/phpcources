@@ -80,6 +80,27 @@ use Core\View;
              $this->renderLayout();
          }
 
-         
+         /**
+          * Shows product add page
+          *
+          * @return void
+          */
+          public function addAction(): void
+          {
+              $model = $this->getModel('Client');
+              $this->set('title', "Додавання клієнта");
+              if ($values = $model->getPostValues()) {
+                  $model->addItem($values);
+              }
+              $this->renderLayout();
+          }
+
+          /**
+           * @return mixed
+           */
+          public function getId()
+          {
+              return filter_input(INPUT_GET, 'id');
+          }
 
  }
