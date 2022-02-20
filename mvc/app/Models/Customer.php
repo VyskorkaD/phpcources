@@ -7,16 +7,16 @@ namespace Models;
 use Core\Model;
 
 /**
- * Class Client
+ * Class Customer
  */
- class Client extends Model
+ class Customer extends Model
  {
      /**
-      * Product constructor.
+      * Customer constructor.
       */
       function __construct()
       {
-          $this->tableName = 'clients';
+          $this->tableName = 'customers';
           $this->idColumn = 'id';
       }
  }

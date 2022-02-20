@@ -8,23 +8,23 @@ use Core\Controller;
 use Core\View;
 
 /**
- * Class ClientController
+ * Class CustomerController
  */
- class ClientController extends Controllers
+ class CustomerController extends Controller
  {
 
      /**
-      * Product index action that shows product list
+      * Customer index action that shows customer list
       *
       * @return void
       */
       public function indexAction(): void
       {
-          $this->forward('client/list');
+          $this->forward('customer/list');
       }
 
       /**
-       * Product list action
+       * Customer list action
        *
        * @return void
        */
@@ -32,18 +32,18 @@ use Core\View;
        {
            $this->set('title', "Клієнти");
 
-           $clients = $this->getModel('Client')
+           $customers = $this->getModel('Customer')
                     ->initCollection()
-                    ->sort($this->getSortParams())
+                    //->sort($this->getSortParams())
                     ->getCollection()
                     ->select();
-            $this->set('clients', $clients);
+            $this->set('customers', $customers);
 
             $this->renderLayout();
        }
 
        /**
-        * Single product view action
+        * Single customer view action
         *
         * @return void
         */
@@ -51,22 +51,22 @@ use Core\View;
         {
             $this->set('title', "Карточка клієнта");
 
-            $client = $this->getModel('Client');
+            $client = $this->getModel('Customer');
             $client->initCollection()
                     ->filter(['id', $this->getId()])
                     ->getCollection()
                     ->selectFirst();
-            $this->set('clients', $client);
+            $this->set('customers', $customer);
         }
 
         /**
-         * Shows product editing page
+         * Shows customer editing page
          *
          * @return void
          */
          public function editAction(): void
          {
-             $model = $this->getModel('Client');
+             $model = $this->getModel('Customer');
              $this->set('saved', 0);
              $this->set('Title', "Редагування клієнта");
              $id = filter_input(INPUT_POST, 'id');
@@ -75,19 +75,19 @@ use Core\View;
                  $this->set('saved', 1);
                  $model->saveItem($id, $values);
              }
-             $this->set('client', $model->getItem($this->getId()));
+             $this->set('customer', $model->getItem($this->getId()));
 
              $this->renderLayout();
          }
 
          /**
-          * Shows product add page
+          * Shows customer add page
           *
           * @return void
           */
           public function addAction(): void
           {
-              $model = $this->getModel('Client');
+              $model = $this->getModel('Customer');
               $this->set('title', "Додавання клієнта");
               if ($values = $model->getPostValues()) {
                   $model->addItem($values);
