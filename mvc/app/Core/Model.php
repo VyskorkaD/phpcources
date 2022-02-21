@@ -186,4 +186,21 @@ abstract class Model implements DbModelInterface
         $db = new DB();
         $db->query($sql, $this->params);
     }
+
+    public function saveItem($id, $values): void
+    {
+        $columns = [];
+        foreach ($values as $key => $value) {
+            array_push($columns, $key);
+            array_push($this->params, $value);
+        }
+        $this->sql = "update $this->tableName set ";
+        foreach ($values as $key => $value) {
+            $this->sql .= "$key = ?, ";
+        }
+        $this->sql = substr($this->sql, 0, -2);
+        $this->sql .= " where {$this->idColumn} = $id;";
+        $db = new DB();
+        $db->query($this->sql, $this->params);
+    }
 }

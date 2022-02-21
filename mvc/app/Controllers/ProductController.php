@@ -72,11 +72,13 @@ class ProductController extends Controller
         $this->set('saved', 0);
         $this->set("title", "Редагування товару");
         $id = filter_input(INPUT_POST, 'id');
+        $id = $this->getId();
         if ($id) {
             $values = $model->getPostValues();
             $this->set('saved', 1);
             $model->saveItem($id, $values);
         }
+
         $this->set('product', $model->getItem($this->getId()));
 
         $this->renderLayout();
