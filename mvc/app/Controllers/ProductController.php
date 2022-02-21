@@ -115,7 +115,6 @@ class ProductController extends Controller
         } else {
             $params['qty'] = 'ASC';
         }
-
         return $params;
     }
 

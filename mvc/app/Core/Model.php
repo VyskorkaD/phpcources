@@ -71,10 +71,14 @@ abstract class Model implements DbModelInterface
      */
     public function sort($params)
     {
-        /*
-          TODO
-          return $this;
-         */
+        /*foreach ($params as $key => $value) {
+            array_push($this->params, $value);
+        }*/
+        $this->sql .= " order by ";
+        foreach ($params as $key => $value) {
+            $this->sql .= "{$key} {$value}, ";
+        }
+        $this->sql = substr($this->sql, 0, -2);
         return $this;
     }
 
@@ -140,7 +144,7 @@ abstract class Model implements DbModelInterface
               if ( isset($_POST[$column]) && $column !== $this->id_column ) {
               $values[$column] = $_POST[$column];
               }
-             * 
+             *
              */
             $column_value = filter_input(INPUT_POST, $column);
             if ($column_value && $column !== $this->idColumn) {
@@ -168,4 +172,18 @@ abstract class Model implements DbModelInterface
         return 1;
     }
 
+    public function addItem($values): void
+    {
+        $columns = [];
+        foreach ($values as $key => $value) {
+            array_push($columns, $key);
+            array_push($this->params, $value);
+        }
+        $vls = str_repeat('?,', count($columns) - 1) . '?';
+        $columns = implode(',', $columns);
+        $sql = "insert into $this->tableName ({$columns}) values ({$vls});";
+        echo $sql;
+        $db = new DB();
+        $db->query($sql, $this->params);
+    }
 }

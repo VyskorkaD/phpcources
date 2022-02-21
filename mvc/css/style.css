@@ -12,3 +12,54 @@
     color: red;
     font-size: 22px;
 }
+
+.add-product {
+    margin: 0 auto;
+    width: 600px;
+    border: 1px solid gray;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+form ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+form li + li {
+    margin-top: 1em;
+}
+
+form label {
+    display: inline-block;
+    width: 130px;
+    margin-right: 0.3em;
+    text-align: right;
+}
+
+input, textarea {
+    font: 1em sans-serif;
+    width: 300px;
+    border: 1px solid gray;
+}
+
+input:focus,
+textarea:focus {
+    border-color: black;
+}
+
+textarea {
+    vertical-align: top;
+    height: 5em;
+}
+
+.submit {
+    margin-left: 9.8em;
+    margin-top: 2em;
+}
+
+.add-title {
+    text-align: center;
+    margin-bottom: 1.2em;
+}

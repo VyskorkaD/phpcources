@@ -52,7 +52,6 @@ class DB
         $dbh = $this->getConnection();
         $stmt = $dbh->prepare($sql);
         $result = $stmt->execute($parameters);
-
         if ($result !== false) {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } else {
@@ -62,7 +61,7 @@ class DB
 
     /**
      * Delete provided entity
-     * 
+     *
      * @param DbModelInterface $model
      * @return bool
      */
