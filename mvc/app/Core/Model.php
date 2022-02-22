@@ -71,9 +71,6 @@ abstract class Model implements DbModelInterface
      */
     public function sort($params)
     {
-        /*foreach ($params as $key => $value) {
-            array_push($this->params, $value);
-        }*/
         $this->sql .= " order by ";
         foreach ($params as $key => $value) {
             $this->sql .= "{$key} {$value}, ";
@@ -169,7 +166,7 @@ abstract class Model implements DbModelInterface
 
     public function getId(): ?int
     {
-        return 1;
+        return (int)$this->columns[$this->getPrimaryKeyName()];
     }
 
     public function addItem($values): void
@@ -182,7 +179,6 @@ abstract class Model implements DbModelInterface
         $vls = str_repeat('?,', count($columns) - 1) . '?';
         $columns = implode(',', $columns);
         $sql = "insert into $this->tableName ({$columns}) values ({$vls});";
-        echo $sql;
         $db = new DB();
         $db->query($sql, $this->params);
     }
@@ -202,5 +198,12 @@ abstract class Model implements DbModelInterface
         $this->sql .= " where {$this->idColumn} = $id;";
         $db = new DB();
         $db->query($this->sql, $this->params);
+    }
+
+    public function deleteItem($model, $id): void
+    {
+        $db = new DB();
+        $model->columns[$model->getPrimaryKeyName()] = $id;
+        $db->deleteEntity($this);
     }
 }

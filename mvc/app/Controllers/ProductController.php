@@ -72,7 +72,6 @@ class ProductController extends Controller
         $this->set('saved', 0);
         $this->set("title", "Редагування товару");
         $id = filter_input(INPUT_POST, 'id');
-        $id = $this->getId();
         if ($id) {
             $values = $model->getPostValues();
             $this->set('saved', 1);
@@ -97,6 +96,14 @@ class ProductController extends Controller
             $model->addItem($values);
         }
         $this->renderLayout();
+    }
+
+    public function deleteAction(): void
+    {
+        $model = $this->getModel('Product');
+        $id = $this->getId();
+        $model->deleteItem($model, $id);
+        header("Location: list");
     }
 
     /**

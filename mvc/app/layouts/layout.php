@@ -20,7 +20,7 @@
         <div class="container">
             <?= $this->get('content'); ?>
         </div>
-        
+
         <hr style="margin:50px 5px;background-color: black;height: 1px;">
         <footer class="container-fluid text-center">
             <p>Test Shop Copyright</p>

@@ -5,6 +5,10 @@
         $productData = $this->get('product');
     ?>
         <li>
+            <label for="id">Id:</label>
+            <input type="decimal" id="id" name="id" value="<?php echo $productData['id'] ?>" readonly>
+        </li>
+        <li>
             <label for="sku">Код:</label>
             <input type="text" id="sku" name="sku" value="<?php echo $productData['sku'] ?>">
         </li>

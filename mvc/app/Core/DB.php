@@ -73,8 +73,7 @@ class DB
                 $model->getPrimaryKeyName()
         );
         $statement = $dbh->prepare($sql);
-
-        return $statement->execute($model->getId());
+        return $statement->execute(array($model->getId()));
     }
 
 }
